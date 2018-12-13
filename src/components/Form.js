@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import axios from "axios";
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { createNote } from '../actions/noteActions';
 
 class Form extends Component {
   
@@ -21,15 +24,12 @@ class Form extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const post = { 
+    const note = { 
       title: this.state.title,
       textBody: this.state.textBody
     }
 
-    axios
-      .post('https://peaceful-sands-23658.herokuapp.com/notes', post)
-      .then(res => console.log(res))
-      .catch(error => console.log(error));
+    this.props.createNote(note);
   }
 
   render() {
@@ -49,4 +49,8 @@ class Form extends Component {
   }
 }
 
-export default Form;
+Form.propTypes = {
+  createNote: PropTypes.func.isRequired
+};
+
+export default connect(null, { createNote })(Form);

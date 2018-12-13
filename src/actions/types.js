@@ -1,2 +1,2 @@
-export const FETCH_POSTS = 'FETCH_POSTS';
-export const NEW_POST = 'NEW_POST';
+export const FETCH_NOTES = 'FETCH_NOTES';
+export const NEW_NOTE = 'NEW_NOTE';
